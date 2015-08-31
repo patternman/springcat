@@ -9,13 +9,8 @@
  */
 package io.springcat.internal.service.impl;
 
-import io.springcat.internal.dao.intf.IUserRepository;
-import io.springcat.po.User;
 import io.springcat.service.IUserService;
-import io.springcat.util.BeanUtil;
 import io.springcat.vo.UserView;
-
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @ClassName: UserService
@@ -25,9 +20,6 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class UserService implements IUserService {
 	
-	@Autowired
-	IUserRepository userRepository;
-
 	/*
 	 * <p>Title: regUser</p>
 	 * <p>Description: </p>
@@ -60,13 +52,12 @@ public class UserService implements IUserService {
 	 */
 	@Override
 	public boolean checkMobile(String mobile) {
-		return userRepository.findByMobile(mobile) != null;
+		return true;
 	}
 
 	@Override
 	public UserView findUserByUsername(String username) {
-		User user =  userRepository.findByUsername(username);
-		return BeanUtil.convertBean(user, UserView.class);
+		return null;
 	}
 
 }

@@ -9,9 +9,6 @@
  */
 package io.springcat.util;
 
-import io.springcat.po.User;
-import io.springcat.vo.UserView;
-
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
@@ -120,8 +117,5 @@ public class BeanUtil {
 		return map;
 	}
 	
-	public static void main(String[] args) throws Exception{
-		System.out.println(convertBean(new User("A","B"), UserView.class));
-	}
 	
 }

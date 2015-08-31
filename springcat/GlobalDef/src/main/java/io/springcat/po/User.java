@@ -9,11 +9,6 @@
  */
 package io.springcat.po;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.NamedQuery;
-
-import org.springframework.data.jpa.domain.AbstractPersistable;
 
 /**
  * @ClassName: User
@@ -21,18 +16,12 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
  * @author: adampeng
  * @date: 2015年3月1日 下午9:51:29
  */
-@Entity
-@NamedQuery(name = "User.findByTheUsersName", query = "from User u where u.username = ?1")
-public class User extends AbstractPersistable<Long>{
+public class User{
 	
-	private static final long serialVersionUID = 1L;
-
-	@Column(unique=true)
 	private String username;
 	
 	private String password;
 	
-	@Column(unique=true)
 	private String mobile;
 	
 	/*
@@ -41,12 +30,7 @@ public class User extends AbstractPersistable<Long>{
 	private boolean isValid;
 	
 	public User() {
-		this(null);
 	}	
-	
-	public User(Long id){
-		this.setId(id);
-	}
 	
 	public User(String username, String mobile){
 		this.setUsername(username);

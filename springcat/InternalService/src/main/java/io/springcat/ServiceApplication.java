@@ -9,12 +9,8 @@
  */
 package io.springcat;
 
-import io.springcat.internal.dao.intf.IUserRepository;
-import io.springcat.po.User;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ImportResource;
 
 /**
@@ -35,37 +31,8 @@ public class ServiceApplication {
 	 * @throws
 	 */
 	public static void main(String[] args) {
-		ApplicationContext ctx = SpringApplication.run(ServiceApplication.class, args);
-
-		IUserRepository repository = (IUserRepository) ctx
-				.getBean(IUserRepository.class);
-
-		// TODO Auto-generated method stub
-		// save a couple of customers
-		repository.save(new User("Jack2", "13402931222"));
-		repository.save(new User("Chloe2", "13402931233"));
-		repository.save(new User("Kim2", "13402931244"));
-		repository.save(new User("David2", "13402931255"));
-		repository.save(new User("Michelle2", "13402931266"));
-
-		// fetch all customers
-		System.out.println("User found with findAll():");
-		System.out.println("-------------------------------");
-		for (User user : repository.findAll()) {
-			System.out.println(user);
-		}
-		System.out.println();
-
-		// fetch an individual customer by ID
-		User user = repository.findOne(1L);
-		System.out.println("User found with findOne(1L):");
-		System.out.println("--------------------------------");
-		System.out.println(user);
-		System.out.println();
-
-		System.out.println(repository.findByMobile("13302931244"));
-		System.out.println(repository.findByMobile("110"));
-		
+//		ApplicationContext ctx = 
+				SpringApplication.run(ServiceApplication.class, args);
 	}
 
 }

@@ -11,7 +11,6 @@ package io.springcat.service;
 
 import io.springcat.vo.UserView;
 
-import org.springframework.stereotype.Service;
 
 /**
  * @ClassName: IUserService
@@ -19,7 +18,6 @@ import org.springframework.stereotype.Service;
  * @author: adampeng
  * @date: 2015年2月26日 上午11:22:11
  */
-@Service
 public interface IUserService {
 	
 	/**
