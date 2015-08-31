@@ -9,6 +9,8 @@
  */
 package io.springcat;
 
+import java.io.IOException;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ImportResource;
@@ -31,8 +33,12 @@ public class ServiceApplication {
 	 * @throws
 	 */
 	public static void main(String[] args) {
-//		ApplicationContext ctx = 
-				SpringApplication.run(ServiceApplication.class, args);
+		SpringApplication.run(ServiceApplication.class, args);
+		try {
+			System.in.read();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

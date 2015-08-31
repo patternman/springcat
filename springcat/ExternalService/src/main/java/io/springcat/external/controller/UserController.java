@@ -7,7 +7,7 @@
  * @date: 2015年2月27日 下午3:50:46
  * @version: V1.0  
  */
-package io.springcat.external.service;
+package io.springcat.external.controller;
 
 import io.springcat.service.IUserService;
 import io.springcat.vo.DefaultView;
