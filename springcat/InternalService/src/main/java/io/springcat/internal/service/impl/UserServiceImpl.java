@@ -18,7 +18,7 @@ import io.springcat.vo.UserView;
  * @author: adampeng
  * @date: 2015年2月26日 下午2:35:32
  */
-public class UserService implements IUserService {
+public class UserServiceImpl implements IUserService {
 	
 	/*
 	 * <p>Title: regUser</p>
