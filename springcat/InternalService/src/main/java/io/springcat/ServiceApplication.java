@@ -9,11 +9,16 @@
  */
 package io.springcat;
 
-import java.io.IOException;
+import io.springcat.repository.mybatis.IUserDao;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.embedded.ServletRegistrationBean;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ImportResource;
+
+import com.alibaba.druid.support.http.StatViewServlet;
 
 /**
  * @ClassName: Application
@@ -22,9 +27,14 @@ import org.springframework.context.annotation.ImportResource;
  * @date: 2015年3月3日 上午10:07:08
  */
 @SpringBootApplication
-@ImportResource("classpath:provider.xml")
+@ImportResource("classpath:applicationContext.xml")
 public class ServiceApplication {
 
+	@Bean
+	public ServletRegistrationBean servletRegistrationBean(){
+	    return new ServletRegistrationBean(new StatViewServlet(),"/stat");
+	}
+	
 	/**
 	 * @Title: main
 	 * @Description: TODO(这里用一句话描述这个方法的作用)
@@ -33,12 +43,14 @@ public class ServiceApplication {
 	 * @throws
 	 */
 	public static void main(String[] args) {
-		SpringApplication.run(ServiceApplication.class, args);
-		try {
-			System.in.read();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		ApplicationContext ctx = SpringApplication.run(ServiceApplication.class, args);
+		IUserDao userDAO = (IUserDao)ctx.getBean("userDAO");
+		System.out.println(userDAO.get(1L));
+//		try {
+//			System.in.read();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 	}
 
 }
