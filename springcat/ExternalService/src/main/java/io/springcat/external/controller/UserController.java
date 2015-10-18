@@ -9,12 +9,10 @@
  */
 package io.springcat.external.controller;
 
-import io.springcat.service.IUserService;
-import io.springcat.vo.DefaultView;
-import io.springcat.vo.UserView;
+import java.util.concurrent.Callable;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
+import javax.websocket.server.PathParam;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,22 +24,35 @@ import org.springframework.web.bind.annotation.RestController;
  * @date: 2015年2月27日 下午3:50:46
  */
 @RestController
+@RequestMapping("/user")
 public class UserController {
 	
-	@Autowired
-	IUserService userService;
+//	@Autowired
+//	IUserService userService;
 	
-	@RequestMapping(value="/user/{username}", method=RequestMethod.GET)
-	public UserView getUser(@PathVariable(value="username") String username){
-		return userService.findUserByUsername(username);
+	@RequestMapping(value="/test", method=RequestMethod.GET)
+	public String getUser(@PathParam(value="username") String username){
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		return "test:" + username;
 	}
 	
-	@RequestMapping("/checkMobile/{mobile}")
-	public DefaultView checkMobile(@PathVariable(value="mobile") String mobile){
-		boolean isExists = userService.checkMobile(mobile);
-		DefaultView view = new DefaultView();
-		view.setResult(String.valueOf(isExists));
-		view.setMsg(isExists?"该号码已被注册":"该号码可以使用");
-		return view;
+	@RequestMapping(value="/async", method=RequestMethod.GET)
+	public Callable<String> findUser(@PathParam(value="username") String username){
+		return new Callable<String>() {
+			@Override
+			public String call() throws Exception {
+				try {
+					Thread.sleep(2000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				return "test:" + username;
+			}
+		};
 	}
+	
 }

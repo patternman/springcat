@@ -9,11 +9,5 @@
 	</parent>
 	<artifactId>GlobalDef</artifactId>
 
-	<properties>
-	</properties>
-
-	<dependencies>
-		
-	</dependencies>
 
 </project>
