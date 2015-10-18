@@ -3,11 +3,13 @@
  */
 package io.springcat.po;
 
+import java.io.Serializable;
+
 /**
  * @author adampeng
  *
  */
-public class IdEntity {
+public class IdEntity implements Serializable{
 
 	protected Long id;
 

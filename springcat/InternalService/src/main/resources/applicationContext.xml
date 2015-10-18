@@ -6,5 +6,6 @@
  
     <!-- <import resource="provider.xml" /> -->
     <import resource="applicationContext-mybatis.xml" />
+    <import resource="provider.xml" />
     
 </beans>

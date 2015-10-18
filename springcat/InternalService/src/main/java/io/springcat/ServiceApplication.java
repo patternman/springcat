@@ -11,6 +11,11 @@ package io.springcat;
 
 import io.springcat.repository.mybatis.IUserDao;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpServlet;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.embedded.ServletRegistrationBean;
@@ -32,7 +37,13 @@ public class ServiceApplication {
 
 	@Bean
 	public ServletRegistrationBean servletRegistrationBean(){
-	    return new ServletRegistrationBean(new StatViewServlet(),"/stat");
+		ServletRegistrationBean servletReg = new ServletRegistrationBean(new StatViewServlet(),"/stat");
+//		Map<String,String> paramMap = new HashMap<String,String>();
+//		paramMap.put("resetEnable", "true");
+//		paramMap.put("loginUsername", "druid");
+//		paramMap.put("loginPassword", "druid");
+//		servletReg.setInitParameters(paramMap);
+	    return servletReg;
 	}
 	
 	/**
