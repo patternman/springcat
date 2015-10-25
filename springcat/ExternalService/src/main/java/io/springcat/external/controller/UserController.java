@@ -11,11 +11,10 @@ package io.springcat.external.controller;
 
 import io.springcat.service.IUserService;
 
-import java.util.concurrent.Callable;
-
 import javax.websocket.server.PathParam;
-
+import java.util.concurrent.Callable;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,19 +42,5 @@ public class UserController {
 		return "test:" + userService.findUserById(id).getUsername();
 	}
 	
-	@RequestMapping(value="/async", method=RequestMethod.GET)
-	public Callable<String> findUser(@PathParam(value="id") Long id){
-		return new Callable<String>() {
-			@Override
-			public String call() throws Exception {
-				try {
-					Thread.sleep(2000);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-				return "a";
-			}
-		};
-	}
 	
 }
