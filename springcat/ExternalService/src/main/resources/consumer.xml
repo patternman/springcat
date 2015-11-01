@@ -9,6 +9,8 @@
 	<!-- 使用zookeeper注册中心暴露服务地址 -->
 	<dubbo:registry protocol="zookeeper" address="192.168.43.88:2181" />
 	
+	<dubbo:consumer check="false" timeout="0" />
+	
 
 	<!-- 开发用_组播方式 -->
 	<!--

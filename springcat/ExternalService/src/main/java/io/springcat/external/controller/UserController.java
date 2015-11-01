@@ -12,7 +12,6 @@ package io.springcat.external.controller;
 import io.springcat.service.IUserService;
 
 import javax.websocket.server.PathParam;
-import java.util.concurrent.Callable;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.RequestMapping;
